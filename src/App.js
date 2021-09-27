@@ -25,12 +25,21 @@ class App extends React.Component {
     }
   }
 
+  handleClear = () => {
+    this.setState({
+      ...this.state,
+      tasks: this.state.tasks.filter((task) => {
+        return(!tasks.completed)
+      })
+    })
+  }
+
   render() {
     return (
       <div>
         <h1>Todo List</h1>
-        <TodoList tasks={tasks} /> 
-        <TodoForm />
+        <TodoList tasks={this.state.tasks} /> 
+        <TodoForm handleClear={this.handleClear} />
       </div>
     );
   }
