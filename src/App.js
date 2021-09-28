@@ -5,33 +5,6 @@ import './App.css'
 import styled from 'styled-components';
 import { HiOutlineSearchCircle } from 'react-icons/hi';
 
-// const tasks = [
-//   {
-//     task: "Build Todo App",
-//     id: 1,
-//     completed: false,
-//   },
-//   {
-//     task: "Style Todo App",
-//     id: 2,
-//     completed: false,
-//   },
-//   {
-//     task: "Persist in local storage",
-//     id: 3,
-//     completed: false,
-//   },
-//   {
-//     task: "Add search funtionality",
-//     id: 4,
-//     completed: false,
-//   },
-//   {
-//     task: "Host on Netlify",
-//     id: 5,
-//     completed: false,
-//   },
-// ];
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -40,15 +13,15 @@ class App extends React.Component {
     super();
     this.state = {
       tasks: [],
-      search: '',
       isSearching: false,
-      filtered: [],
-      input: ''
+      search: '',
+      filtered: []
     }
   }
 
   componentDidMount() {
     this.setState({
+      ...this.state,
       tasks: window.localStorage.getItem('tasks') ? JSON.parse(window.localStorage.getItem('tasks')) : []
     })
   }
@@ -56,11 +29,11 @@ class App extends React.Component {
   componentDidUpdate() {
     const updatedTasks = [...this.state.tasks];
     window.localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-    
   }
 
   handleToggle = (id) => {
     this.setState({
+      ...this.state,
       tasks: this.state.tasks.map((task) => {
         if(task.id === id) {
           return({
@@ -84,7 +57,9 @@ class App extends React.Component {
     const updatedItems = [...this.state.tasks, newTask];
 
     this.setState({
-      tasks: updatedItems
+      ...this.state,
+      tasks: updatedItems,
+      input: ''
     })
 
     window.localStorage.setItem('tasks', JSON.stringify(updatedItems));
@@ -110,9 +85,10 @@ class App extends React.Component {
     this.setState({
       ...this.state,
       isSearching: true,
-      tasks: this.state.tasks.filter((task) => {
+      filtered: this.state.tasks.filter((task) => {
         return(task.task.includes(this.state.search))
-      })
+      }),
+      search: ''
     })
   }
 
@@ -123,15 +99,17 @@ class App extends React.Component {
           <StyledH1>todoizt</StyledH1>
         </TitleDiv>
         <SearchDiv>
-          <Search onChange={this.handleChange} type="text" placeholder="Search" />
+          <Search onChange={this.handleChange} type="text" value={this.state.search} placeholder="Search" />
           <StyledButton onClick={this.handleSearch}>
             <HiOutlineSearchCircle color={'#BB86FC'} size={'2.2rem'} />
           </StyledButton>
         </SearchDiv>
       </Nav>
       <StyledDiv>
-        <TodoList tasks={this.state.tasks} handleToggle={this.handleToggle} /> 
-        <TodoForm handleAdd={this.handleAdd} handleClear={this.handleClear} />
+        {this.state.isSearching
+          ? <TodoList tasks={this.state.filtered} handleToggle={this.handleToggle} />
+          : <TodoList tasks={this.state.tasks} handleToggle={this.handleToggle} />}
+        <TodoForm handleAdd={this.handleAdd} handleClear={this.handleClear} placeholder={this.state.placeholder} value={this.state.input} />
       </StyledDiv>
     </>);
   }
@@ -180,6 +158,10 @@ const Search = styled.input`
   border: 1px solid #BB86FC;
   margin-top: 1.1rem;
   font-family: 'Open Sans', sans-serif;
+  padding-left: .5rem;
+  ::placeholder {
+    font-family: 'Open Sans', sans-serif;
+  }
 `
 
 const StyledButton = styled.button`

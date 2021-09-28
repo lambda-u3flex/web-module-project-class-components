@@ -3,17 +3,18 @@ import { GoDiffAdded, GoDiffRemoved } from 'react-icons/go';
 import styled from 'styled-components';
 
 const TodoForm = (props) => {
-    const [input, setInput] = useState('');
+    const [value, setValue] = useState('');
 
     const handleChange = (e) => {
-        setInput(e.target.value);
+        setValue(e.target.value)
     }
 
     const handleAddClick = (e) => {
         e.preventDefault();
-        (input.length > 0)
-            ? props.handleAdd(input)
+        (value.length > 0)
+            ? props.handleAdd(value)
             : alert('Error: Task cannot be empty.')
+        setValue('');
     }
 
     const handleClearClick = (e) => {
@@ -25,7 +26,7 @@ const TodoForm = (props) => {
         <form onSubmit={handleAddClick}>
             <StyledDiv>
             <InputDiv>
-                <StyledInput onChange={handleChange} type="text" placeholder="Add a task..." required />
+                <StyledInput onChange={handleChange} type="text" placeholder="Add a task..." value={value} required />
             </InputDiv>
             <ButtonDiv>
                 <Add onClick={handleAddClick}>
@@ -69,7 +70,6 @@ const StyledInput = styled.input`
   padding-left: .8rem;
   font-family: 'Open Sans', sans-serif;
   ::placeholder {
-      color: #fff;
       font-family: 'Open Sans', sans-serif;
   }
 `
