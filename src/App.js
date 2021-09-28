@@ -9,11 +9,26 @@ const tasks = [
   {
     task: "Build Todo App",
     id: 1,
-    completed: true,
+    completed: false,
   },
   {
     task: "Style Todo App",
     id: 2,
+    completed: false,
+  },
+  {
+    task: "Persist in local storage",
+    id: 3,
+    completed: false,
+  },
+  {
+    task: "Add search funtionality",
+    id: 4,
+    completed: false,
+  },
+  {
+    task: "Host on Netlify",
+    id: 5,
     completed: false,
   },
 ];
@@ -143,8 +158,9 @@ const StyledButton = styled.button`
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 6rem;
+  margin-top: 4.7rem;
+  box-sizing: border-box;
+  width: 100%;
 `
 
 export default App;
