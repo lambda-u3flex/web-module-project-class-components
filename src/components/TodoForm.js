@@ -1,11 +1,15 @@
 import React from 'react';
 
 const TodoForm = (props) => {
-    console.log(props)
+    const handleClearClick = (e) => {
+        e.preventDefault();
+        props.handleClear();
+    }
+
     return(<div>
-        <input />
+        <input placeholder="Enter task" />
         <button>Add</button>
-        <button onClick={props.handleClear}>Clear</button>
+        <button onClick={handleClearClick}>Clear</button>
     </div>)
 }
 

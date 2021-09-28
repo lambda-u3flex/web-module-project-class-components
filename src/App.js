@@ -6,12 +6,12 @@ const tasks = [
   {
     task: "Build Todo App",
     id: 1,
-    completed: false,
+    completed: true,
   },
   {
     task: "Style Todo App",
     id: 2,
-    completed: false,
+    completed: true,
   },
 ];
 class App extends React.Component {
@@ -26,12 +26,14 @@ class App extends React.Component {
   }
 
   handleClear = () => {
+    console.log(tasks)
     this.setState({
       ...this.state,
       tasks: this.state.tasks.filter((task) => {
-        return(!tasks.completed)
+        return(!task.completed)
       })
     })
+    console.log(tasks)
   }
 
   render() {
