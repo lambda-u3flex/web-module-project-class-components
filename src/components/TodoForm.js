@@ -65,8 +65,10 @@ const StyledInput = styled.input`
   width: 100%;
   font-size: 1.2rem;
   padding-left: .5rem;
+  font-family: 'Open Sans', sans-serif;
   ::placeholder {
       color: #fff;
+      font-family: 'Open Sans', sans-serif;
   }
 `
 

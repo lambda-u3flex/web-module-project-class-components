@@ -121,7 +121,7 @@ const Nav = styled.div`
 `
 const TitleDiv = styled.div`
   justify-content: flex-start;
-  padding-top: 0.5rem;
+  padding: 0.3rem;
 `
 
 const StyledH1 = styled.h1`
@@ -136,7 +136,7 @@ const SearchDiv = styled.div`
   justify-content: flex-end;
   align-items: flex-start;
   width: 100%;
-  padding-top: 1.1rem;
+  padding: 0 .5rem;
 `
 
 const Search = styled.input`
@@ -147,18 +147,20 @@ const Search = styled.input`
   color: #fff;
   width: 60%;
   border: 1px solid #BB86FC;
+  margin-top: 1.1rem;
+  font-family: 'Open Sans', sans-serif;
 `
 
 const StyledButton = styled.button`
   background: none;
   border: none;
-  margin-top: -.2rem;
+  margin-top: .9rem;
 `
 
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 4.7rem;
+  margin-top: 5.2rem;
   box-sizing: border-box;
   width: 100%;
 `
