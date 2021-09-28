@@ -39,9 +39,21 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      tasks: window.localStorage.getItem('tasks') ? JSON.parse(window.localStorage.getItem('tasks')) : [],
+      tasks: [],
       input: ''
     }
+  }
+
+  componentDidMount() {
+    this.setState({
+      tasks: window.localStorage.getItem('tasks') ? JSON.parse(window.localStorage.getItem('tasks')) : []
+    })
+  }
+
+  componentDidUpdate() {
+    const updatedTasks = [...this.state.tasks];
+    window.localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    
   }
 
   handleToggle = (id) => {
