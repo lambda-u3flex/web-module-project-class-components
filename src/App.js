@@ -21,19 +21,26 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      tasks: tasks
+      tasks: tasks,
+      input: ''
     }
   }
 
+  handleChange = (e) => {
+    console.log(e.target.value)
+    this.setState({
+      ...this.state,
+      input: e.target.value
+    })
+  }
+
   handleClear = () => {
-    console.log(tasks)
     this.setState({
       ...this.state,
       tasks: this.state.tasks.filter((task) => {
         return(!task.completed)
       })
     })
-    console.log(tasks)
   }
 
   render() {
@@ -41,7 +48,7 @@ class App extends React.Component {
       <div>
         <h1>Todo List</h1>
         <TodoList tasks={this.state.tasks} /> 
-        <TodoForm handleClear={this.handleClear} />
+        <TodoForm handleChange={this.handleChange} handleClear={this.handleClear} />
       </div>
     );
   }

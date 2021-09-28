@@ -7,7 +7,7 @@ const TodoForm = (props) => {
     }
 
     return(<div>
-        <input placeholder="Enter task" />
+        <input onChange={props.handleChange} placeholder="Enter task" />
         <button>Add</button>
         <button onClick={handleClearClick}>Clear</button>
     </div>)
