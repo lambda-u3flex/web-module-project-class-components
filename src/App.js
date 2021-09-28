@@ -6,12 +6,12 @@ const tasks = [
   {
     task: "Build Todo App",
     id: 1,
-    completed: true,
+    completed: false,
   },
   {
     task: "Style Todo App",
     id: 2,
-    completed: true,
+    completed: false,
   },
 ];
 class App extends React.Component {
@@ -27,10 +27,22 @@ class App extends React.Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.value)
     this.setState({
       ...this.state,
       input: e.target.value
+    })
+  }
+
+  handleAdd = (name) => {
+    const newTask = {
+      task: name,
+      id: Date.now(),
+      completed: false
+    }
+
+    this.setState({
+      ...this.state,
+      tasks: [...this.state.tasks, newTask]
     })
   }
 
@@ -48,7 +60,7 @@ class App extends React.Component {
       <div>
         <h1>Todo List</h1>
         <TodoList tasks={this.state.tasks} /> 
-        <TodoForm handleChange={this.handleChange} handleClear={this.handleClear} />
+        <TodoForm handleChange={this.handleChange} handleAdd={this.handleAdd} handleClear={this.handleClear} />
       </div>
     );
   }
