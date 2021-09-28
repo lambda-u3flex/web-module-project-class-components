@@ -24,6 +24,7 @@ const Completed = styled.div`
     margin: .4rem;
     background: #40375c;
     padding: 1rem;
+    padding-bottom: 1.4rem;
     width: 70%;
     border-radius: .5rem;
     text-decoration: line-through;

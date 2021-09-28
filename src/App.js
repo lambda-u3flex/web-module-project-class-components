@@ -40,6 +40,9 @@ class App extends React.Component {
     super();
     this.state = {
       tasks: [],
+      search: '',
+      isSearching: false,
+      filtered: [],
       input: ''
     }
   }
@@ -96,8 +99,21 @@ class App extends React.Component {
     })
   }
 
+  handleChange = (e) => {
+    this.setState({
+      ...this.state,
+      search: e.target.value
+    })
+  }
+
   handleSearch = () => {
-    console.log('test')
+    this.setState({
+      ...this.state,
+      isSearching: true,
+      tasks: this.state.tasks.filter((task) => {
+        return(task.task.includes(this.state.search))
+      })
+    })
   }
 
   render() {
@@ -107,7 +123,7 @@ class App extends React.Component {
           <StyledH1>todoizt</StyledH1>
         </TitleDiv>
         <SearchDiv>
-          <Search />
+          <Search onChange={this.handleChange} type="text" placeholder="Search" />
           <StyledButton onClick={this.handleSearch}>
             <HiOutlineSearchCircle color={'#BB86FC'} size={'2.2rem'} />
           </StyledButton>
