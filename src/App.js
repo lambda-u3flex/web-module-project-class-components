@@ -47,6 +47,22 @@ class App extends React.Component {
     })
   }
 
+  handleFilteredToggle = (id) => {
+    this.setState({
+      ...this.state,
+      filtered: this.state.filtered.map((task) => {
+        if(task.id === id) {
+          return({
+            ...task,
+            completed: !task.completed
+          })
+        } else {
+          return(task);
+        }
+      })
+    })
+  }
+
   handleAdd = (name) => {
     const newTask = {
       task: name,
@@ -87,9 +103,13 @@ class App extends React.Component {
       isSearching: true,
       filtered: this.state.tasks.filter((task) => {
         return(task.task.includes(this.state.search))
-      }),
-      search: ''
+      })
     })
+    if (this.state.search === '') {
+      this.setState({
+        isSearching: false
+      })
+    }
   }
 
   render() {
@@ -107,7 +127,7 @@ class App extends React.Component {
       </Nav>
       <StyledDiv>
         {this.state.isSearching
-          ? <TodoList tasks={this.state.filtered} handleToggle={this.handleToggle} />
+          ? <TodoList tasks={this.state.filtered} handleToggle={this.handleFilteredToggle} />
           : <TodoList tasks={this.state.tasks} handleToggle={this.handleToggle} />}
         <TodoForm handleAdd={this.handleAdd} handleClear={this.handleClear} placeholder={this.state.placeholder} value={this.state.input} />
       </StyledDiv>
