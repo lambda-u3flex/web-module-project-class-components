@@ -93,11 +93,16 @@ class App extends React.Component {
 
 const Nav = styled.div`
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   flex-direction: row;
   justify-content: space-between;
   padding-left: 1rem;
   padding-right: 0.5rem;
   background: #161618;
+  border-bottom: 1px solid #BB86FC;
 `
 const TitleDiv = styled.div`
   justify-content: flex-start;
@@ -139,7 +144,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 6rem;
 `
 
 export default App;

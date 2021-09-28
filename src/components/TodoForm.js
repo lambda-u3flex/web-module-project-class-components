@@ -18,17 +18,70 @@ const TodoForm = (props) => {
         props.handleClear();
     }
 
-    return(<StyledDiv>
+    return(<>
         <form onSubmit={handleAddClick}>
-            <input onChange={handleChange} type="text" placeholder="Enter task" />
-            <button onClick={handleAddClick}>Add</button>
-            <button onClick={handleClearClick}>Clear</button>
+            <StyledDiv>
+            <InputDiv>
+                <StyledInput onChange={handleChange} type="text" placeholder="Enter task..." />
+            </InputDiv>
+            <ButtonDiv>
+                <Add onClick={handleAddClick}>Add</Add>
+                <Clear onClick={handleClearClick}>Clear</Clear>
+            </ButtonDiv>
+            </StyledDiv>
         </form>
-    </StyledDiv>)
+    </>)
 }
 
 const StyledDiv = styled.div`
-    margin-top: 1.5rem;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid #BB86FC;
+`
+
+const InputDiv = styled.div`
+display: flex;
+justify-content: flex-start;
+width: 60%;
+`
+
+const StyledInput = styled.input`
+  background: #40375c;
+  border: none;
+  height: 2.4rem;
+  border-radius: .2rem;
+  color: #fff;
+  width: 100%;
+  font-size: 1.2rem;
+  padding-left: .5rem;
+  ::placeholder {
+      color: #fff;
+  }
+`
+
+const ButtonDiv = styled.div`
+display: flex;
+justify-content: flex-end;
+width: 40%;
+`
+
+const Add = styled.button`
+width: 100%;
+background: #BB86FC;
+border: none;
+text-transform: uppercase;
+font-size: 1rem;
+`
+
+const Clear = styled.button`
+width: 100%;
+text-transform: uppercase;
+font-size: 1rem;
 `
 
 export default TodoForm;
