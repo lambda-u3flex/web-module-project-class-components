@@ -83,10 +83,13 @@ class App extends React.Component {
 
   handleClear = () => {
     this.setState({
-      ...this.state,
       tasks: this.state.tasks.filter((task) => {
-        return(!task.completed)
-      })
+        return (!task.completed)
+      }),
+      filtered: this.state.filtered.filter((task) => {
+        return (!task.completed)
+      }),
+      search: ''
     })
   }
 
@@ -98,16 +101,17 @@ class App extends React.Component {
   }
 
   handleSearch = () => {
-    this.setState({
-      ...this.state,
-      isSearching: true,
-      filtered: this.state.tasks.filter((task) => {
-        return(task.task.includes(this.state.search))
-      })
-    })
     if (this.state.search === '') {
       this.setState({
         isSearching: false
+      })
+    } else {
+      this.setState({
+        ...this.state,
+        isSearching: true,
+        filtered: this.state.tasks.filter((task) => {
+          return(task.task.includes(this.state.search))
+        })
       })
     }
   }
