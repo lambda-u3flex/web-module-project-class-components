@@ -79,7 +79,7 @@ class App extends React.Component {
         <SearchDiv>
           <Search />
           <StyledButton onClick={this.handleSearch}>
-            <HiOutlineSearchCircle color={'#BB86FC'} size={'2rem'} />
+            <HiOutlineSearchCircle color={'#BB86FC'} size={'2.2rem'} />
           </StyledButton>
         </SearchDiv>
       </Nav>
@@ -97,15 +97,16 @@ const Nav = styled.div`
   justify-content: space-between;
   padding-left: 1rem;
   padding-right: 0.5rem;
-  margin-top: 0.5rem;
+  background: #161618;
 `
 const TitleDiv = styled.div`
   justify-content: flex-start;
+  padding-top: 0.5rem;
 `
 
 const StyledH1 = styled.h1`
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: .8rem;
   color: #BB86FC;
 `
 
@@ -115,21 +116,23 @@ const SearchDiv = styled.div`
   justify-content: flex-end;
   align-items: flex-start;
   width: 100%;
-  margin-top: .5rem;
+  padding-top: 1.1rem;
 `
 
 const Search = styled.input`
   background: #40375c;
   border: none;
-  height: 2rem;
+  height: 1.8rem;
   border-radius: .2rem;
   color: #fff;
   width: 60%;
+  border: 1px solid #BB86FC;
 `
 
 const StyledButton = styled.button`
   background: none;
   border: none;
+  margin-top: -.2rem;
 `
 
 const StyledDiv = styled.div`
