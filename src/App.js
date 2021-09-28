@@ -39,7 +39,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      tasks: tasks,
+      tasks: window.localStorage.getItem('tasks') ? JSON.parse(window.localStorage.getItem('tasks')) : [],
       input: ''
     }
   }
@@ -51,12 +51,12 @@ class App extends React.Component {
           return({
             ...task,
             completed: !task.completed
-          });
+          })
         } else {
           return(task);
         }
       })
-    });
+    })
   }
 
   handleAdd = (name) => {
@@ -66,10 +66,13 @@ class App extends React.Component {
       completed: false
     }
 
+    const updatedItems = [...this.state.tasks, newTask];
+
     this.setState({
-      ...this.state,
-      tasks: [...this.state.tasks, newTask]
+      tasks: updatedItems
     })
+
+    window.localStorage.setItem('tasks', JSON.stringify(updatedItems));
   }
 
   handleClear = () => {
