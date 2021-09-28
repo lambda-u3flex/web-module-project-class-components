@@ -35,6 +35,7 @@ const Incomplete = styled.div`
     margin: .4rem;
     background: #BB86FC;
     padding: 1rem;
+    padding-bottom: 1.4rem;
     width: 70%;
     border-radius: .5rem;
     font-size: 1.4rem;

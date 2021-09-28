@@ -11,7 +11,9 @@ const TodoForm = (props) => {
 
     const handleAddClick = (e) => {
         e.preventDefault();
-        props.handleAdd(input);
+        (input.length > 0)
+            ? props.handleAdd(input)
+            : alert('Error: Task cannot be empty.')
     }
 
     const handleClearClick = (e) => {
@@ -23,7 +25,7 @@ const TodoForm = (props) => {
         <form onSubmit={handleAddClick}>
             <StyledDiv>
             <InputDiv>
-                <StyledInput onChange={handleChange} type="text" placeholder="Enter task..." />
+                <StyledInput onChange={handleChange} type="text" placeholder="Add a task..." required />
             </InputDiv>
             <ButtonDiv>
                 <Add onClick={handleAddClick}>
@@ -64,7 +66,7 @@ const StyledInput = styled.input`
   color: #fff;
   width: 100%;
   font-size: 1.2rem;
-  padding-left: .5rem;
+  padding-left: .8rem;
   font-family: 'Open Sans', sans-serif;
   ::placeholder {
       color: #fff;
