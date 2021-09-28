@@ -26,13 +26,6 @@ class App extends React.Component {
     }
   }
 
-  handleChange = (e) => {
-    this.setState({
-      ...this.state,
-      input: e.target.value
-    })
-  }
-
   handleAdd = (name) => {
     const newTask = {
       task: name,
@@ -60,7 +53,7 @@ class App extends React.Component {
       <div>
         <h1>Todo List</h1>
         <TodoList tasks={this.state.tasks} /> 
-        <TodoForm handleChange={this.handleChange} handleAdd={this.handleAdd} handleClear={this.handleClear} />
+        <TodoForm handleAdd={this.handleAdd} handleClear={this.handleClear} />
       </div>
     );
   }

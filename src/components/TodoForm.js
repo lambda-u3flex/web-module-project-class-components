@@ -18,9 +18,11 @@ const TodoForm = (props) => {
     }
 
     return(<div>
-        <input onChange={handleChange} placeholder="Enter task" />
-        <button onClick={handleAddClick}>Add</button>
-        <button onClick={handleClearClick}>Clear</button>
+        <form onSubmit={handleAddClick}>
+            <input onChange={handleChange} placeholder="Enter task" />
+            <button onClick={handleAddClick}>Add</button>
+            <button onClick={handleClearClick}>Clear</button>
+        </form>
     </div>)
 }
 
