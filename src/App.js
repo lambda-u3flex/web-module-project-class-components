@@ -5,33 +5,33 @@ import './App.css'
 import styled from 'styled-components';
 import { HiOutlineSearchCircle } from 'react-icons/hi';
 
-const tasks = [
-  {
-    task: "Build Todo App",
-    id: 1,
-    completed: false,
-  },
-  {
-    task: "Style Todo App",
-    id: 2,
-    completed: false,
-  },
-  {
-    task: "Persist in local storage",
-    id: 3,
-    completed: false,
-  },
-  {
-    task: "Add search funtionality",
-    id: 4,
-    completed: false,
-  },
-  {
-    task: "Host on Netlify",
-    id: 5,
-    completed: false,
-  },
-];
+// const tasks = [
+//   {
+//     task: "Build Todo App",
+//     id: 1,
+//     completed: false,
+//   },
+//   {
+//     task: "Style Todo App",
+//     id: 2,
+//     completed: false,
+//   },
+//   {
+//     task: "Persist in local storage",
+//     id: 3,
+//     completed: false,
+//   },
+//   {
+//     task: "Add search funtionality",
+//     id: 4,
+//     completed: false,
+//   },
+//   {
+//     task: "Host on Netlify",
+//     id: 5,
+//     completed: false,
+//   },
+// ];
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
