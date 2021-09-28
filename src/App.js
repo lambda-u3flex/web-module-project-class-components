@@ -2,6 +2,7 @@ import React from 'react';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 import './App.css'
+import styled from 'styled-components';
 
 const tasks = [
   {
@@ -66,13 +67,25 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Todo List</h1>
+      <StyledDiv>
+        <StyledH1>Todoizt</StyledH1>
         <TodoList tasks={this.state.tasks} handleToggle={this.handleToggle} /> 
         <TodoForm handleAdd={this.handleAdd} handleClear={this.handleClear} />
-      </div>
+      </StyledDiv>
     );
   }
 }
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+`
+
+const StyledH1 = styled.h1`
+  font-size: 3rem;
+  margin-bottom: 1rem;
+`
 
 export default App;

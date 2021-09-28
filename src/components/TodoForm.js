@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const TodoForm = (props) => {
     const [input, setInput] = useState('');
@@ -17,13 +18,17 @@ const TodoForm = (props) => {
         props.handleClear();
     }
 
-    return(<div>
+    return(<StyledDiv>
         <form onSubmit={handleAddClick}>
             <input onChange={handleChange} type="text" placeholder="Enter task" />
             <button onClick={handleAddClick}>Add</button>
             <button onClick={handleClearClick}>Clear</button>
         </form>
-    </div>)
+    </StyledDiv>)
 }
+
+const StyledDiv = styled.div`
+    margin-top: 1.5rem;
+`
 
 export default TodoForm;
