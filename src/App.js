@@ -6,7 +6,7 @@ const tasks = [
   {
     task: "Build Todo App",
     id: 1,
-    completed: false,
+    completed: true,
   },
   {
     task: "Style Todo App",
@@ -24,6 +24,21 @@ class App extends React.Component {
       tasks: tasks,
       input: ''
     }
+  }
+
+  handleToggle = (id) => {
+    this.setState({
+      tasks: this.state.tasks.map((task) => {
+        if(task.id === id) {
+          return({
+            ...task,
+            completed: !task.completed
+          });
+        } else {
+          return(task);
+        }
+      })
+    });
   }
 
   handleAdd = (name) => {
@@ -52,7 +67,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Todo List</h1>
-        <TodoList tasks={this.state.tasks} /> 
+        <TodoList tasks={this.state.tasks} handleToggle={this.handleToggle} /> 
         <TodoForm handleAdd={this.handleAdd} handleClear={this.handleClear} />
       </div>
     );
