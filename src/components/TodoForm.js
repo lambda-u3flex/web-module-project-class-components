@@ -19,7 +19,7 @@ const TodoForm = (props) => {
 
     return(<div>
         <form onSubmit={handleAddClick}>
-            <input onChange={handleChange} placeholder="Enter task" />
+            <input onChange={handleChange} type="text" placeholder="Enter task" />
             <button onClick={handleAddClick}>Add</button>
             <button onClick={handleClearClick}>Clear</button>
         </form>
